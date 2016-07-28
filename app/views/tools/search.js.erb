@@ -1,2 +1,7 @@
-$("#tool_name").val("");
-$("ul").html("<%= j(render @tools) %>");
+$("#tool_name").blur(function(){
+  if($(this).val() == ""){
+    $("#tool_list").html("");
+  };
+});
+
+$("#tool_list").html("<%= j(render @tools) %>");

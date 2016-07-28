@@ -26,13 +26,16 @@
 
 <%= link_to 'New Tool', new_tool_path %>
 
+<h4>既にアプリが登録されているか調べる</h4>
+
 <%= form_tag search_tools_path, method: :get, remote: true do %>
-  <p>
-    <input type="text" name="keyword" id="tool_name" placeholder="アプリ名を入れてください">
-    <input type="submit">
-  </p>
+<p>
+  <%= text_field_tag :tool, "",  id: "tool_name", name: "keyword", placeholder: "アプリ名を入力してください", style: "width: 200px;"%>
+</p>
 <% end %>
 
-<ul>
-  <!-- 検索結果が表示される -->
-</ul>
+<div id="tool_list">
+  <ul>
+    <!-- 検索結果が表示される -->
+  </ul>
+</div>
