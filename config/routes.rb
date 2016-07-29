@@ -5,4 +5,5 @@ Rails.application.routes.draw do
       get 'autocomplete_tool_name'
     end
   end
+  resources :users
 end
