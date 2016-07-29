@@ -48,3 +48,5 @@ end
 gem 'pry-rails'
 gem 'jquery-ui-rails'
 gem 'rails-jquery-autocomplete'
+gem 'better_errors'
+gem 'binding_of_caller'
