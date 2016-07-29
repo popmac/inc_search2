@@ -46,3 +46,5 @@ group :development do
 end
 
 gem 'pry-rails'
+gem 'jquery-ui-rails'
+gem 'rails-jquery-autocomplete'
