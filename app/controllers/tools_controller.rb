@@ -1,6 +1,8 @@
 class ToolsController < ApplicationController
   before_action :set_tool, only: [:show, :edit, :update, :destroy]
 
+  autocomplete :tool, :name, :full => true
+
   # GET /tools
   # GET /tools.json
   def index
@@ -24,7 +26,7 @@ class ToolsController < ApplicationController
   # POST /tools
   # POST /tools.json
   def create
-    @tool = Tool.new(tool_params)
+    @tool = Tool.where(name: params[:tool][:name]).first_or_initialize
 
     respond_to do |format|
       if @tool.save
