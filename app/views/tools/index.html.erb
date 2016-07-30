@@ -3,10 +3,18 @@
 <h1>Listing Tools</h1>
 
 <%= link_to '会員登録', new_user_registration_path %>
+<%= link_to 'ログイン', user_session_path %>
+<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+<%= link_to 'ユーザーページ', users_path%>
+
 
 <br>
 
-<%= current_user.id %>さん
+<% if user_signed_in? %>
+<p>ようこそ<%= current_user.id %>さん</p>
+<% end %>
+
+<%= link_to 'New Tool', new_tool_path %>
 
 <table>
   <thead>
@@ -18,16 +26,12 @@
 
   <tbody>
     <% @tools.each do |tool| %>
-      <tr>
-        <td><%= tool.name %></td>
-        <td><%= link_to 'Show', tool %></td>
-        <td><%= link_to 'Edit', edit_tool_path(tool) %></td>
-        <td><%= link_to 'Destroy', tool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <tr>
+      <td><%= tool.name %></td>
+      <td><%= link_to 'Show', tool %></td>
+      <td><%= link_to 'Edit', edit_tool_path(tool) %></td>
+      <td><%= link_to 'Destroy', tool, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Tool', new_tool_path %>

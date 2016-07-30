@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users
   resources :tools do
     collection do
       get 'search'
@@ -7,4 +8,5 @@ Rails.application.routes.draw do
     end
   end
   resources :reviews
+  root 'tools#index'
 end
