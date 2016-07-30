@@ -17,6 +17,8 @@ class ToolsController < ApplicationController
   # GET /tools/new
   def new
     @tool = Tool.new
+    @tool.reviews.build
+    # @review = Review.new
   end
 
   # GET /tools/1/edit
@@ -27,16 +29,10 @@ class ToolsController < ApplicationController
   # POST /tools.json
   def create
     @tool = Tool.where(name: params[:tool][:name]).first_or_initialize
-
-    respond_to do |format|
-      if @tool.save
-        format.html { redirect_to @tool, notice: 'Tool was successfully created.' }
-        format.json { render :show, status: :created, location: @tool }
-      else
-        format.html { render :new }
-        format.json { render json: @tool.errors, status: :unprocessable_entity }
-      end
-    end
+    @tool.save
+    @review = Review.new(review_params)
+    @review.save
+    redirect_to tools_path
   end
 
   # PATCH/PUT /tools/1
@@ -76,5 +72,9 @@ class ToolsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tool_params
       params.require(:tool).permit(:name)
+    end
+
+    def review_params
+      params.require(:tool).require(:review).permit(:review).merge(user_id: current_user.id, tool_id: @tool.id)
     end
 end
