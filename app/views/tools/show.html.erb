@@ -5,5 +5,11 @@
   <%= @tool.name %>
 </p>
 
+<% @tool.reviews.each do |review| %>
+<a href="/users/<%= review.user.id %>"><%= review.user.id %></a>:<%= review.review %><br>
+<% end %>
+
+<br>
+
 <%= link_to 'Edit', edit_tool_path(@tool) %> |
 <%= link_to 'Back', tools_path %>

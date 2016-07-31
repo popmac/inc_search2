@@ -7,11 +7,14 @@ class ToolsController < ApplicationController
   # GET /tools.json
   def index
     @tools = Tool.all
+    @users = User.all
   end
 
   # GET /tools/1
   # GET /tools/1.json
   def show
+    @tool = Tool.find(params[:id])
+    @reviews = @tool.reviews
   end
 
   # GET /tools/new
