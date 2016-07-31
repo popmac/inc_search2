@@ -4,5 +4,5 @@
 
 <% @reviews.each do |review| %>
 <%= tool_name(review.tool_id).name %><br>
-<%= review.review %><br>
+<%= review.review %><%= link_to '削除', "/reviews/#{review.id}", method: :delete %><br>
 <% end %>
