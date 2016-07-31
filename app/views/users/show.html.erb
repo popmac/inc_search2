@@ -1,1 +1,8 @@
 <%= link_to 'Back', tools_path %>
+
+<h3>投稿したアプリとレビュー</h3>
+
+<% @reviews.each do |review| %>
+<%= tool_name(review.tool_id).name %><br>
+<%= review.review %><br>
+<% end %>
