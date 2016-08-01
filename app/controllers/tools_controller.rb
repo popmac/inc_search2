@@ -32,10 +32,21 @@ class ToolsController < ApplicationController
   # POST /tools.json
   def create
     @tool = Tool.where(name: params[:tool][:name]).first_or_initialize
-    @tool.save
+    if @tool.name.present?
+      @tool.save
+    else
+      render 'new' and return
+      # redirect_to new_tool_path and return
+    end
     @review = Review.new(review_params)
-    @review.save
-    redirect_to tools_path
+    if @review.review.present?
+      @review.save
+      redirect_to tools_path and return
+    else
+      @tool.destroy
+      render 'new'
+      # redirect_to new_tool_path
+    end
   end
 
   # PATCH/PUT /tools/1
