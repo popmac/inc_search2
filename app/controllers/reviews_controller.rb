@@ -7,10 +7,8 @@ class ReviewsController < ApplicationController
   def update
     review = Review.find(params[:id])
     @tool_id = review.tool.id
-    if review.user_id.to_i == current_user.id
-      review.update(update_params)
-      redirect_to root_path
-    end
+    review.update(update_params)
+    redirect_to root_path
   end
 
   def destroy

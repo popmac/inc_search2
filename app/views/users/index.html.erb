@@ -3,7 +3,6 @@
 <h3>投稿したアプリとレビュー</h3>
 
 <% @reviews.each do |review| %>
-<%= tool_name(review.tool_id).name %><br>
 <%= review.tool.name %><br>
 <%= review.review %><%= link_to '編集', "/reviews/#{review.id}/edit" %><%= link_to '削除', "/reviews/#{review.id}", method: :delete %><br>
 <% end %>
