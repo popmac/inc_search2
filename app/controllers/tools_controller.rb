@@ -21,7 +21,6 @@ class ToolsController < ApplicationController
   def new
     @tool = Tool.new
     @tool.reviews.build
-    # @review = Review.new
   end
 
   # GET /tools/1/edit
