@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       get 'autocomplete_tool_name'
     end
   end
-  resources :reviews
+  resources :reviews do
+    resources :likes, only: [:create, :destroy]
+  end
   root 'tools#index'
 end
