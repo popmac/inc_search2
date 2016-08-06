@@ -1,4 +1,19 @@
+<!-- レビュー内容の表示 -->
 <%= @review.review %>
+
+<!-- 「いいね」ボタンの表示 -->
 <div id="review-detail-like-button">
-<%= render partial: "likes/like", locals: { like: @review.likes.find_by(user_id: current_user.id), review: @review } %>
+  <%= render partial: "likes/like", locals: { like: @review.likes.find_by(user_id: current_user.id), review: @review } %>
+</div>
+
+<!-- コメントの表示 -->
+<div id="comments">
+  <%= render partial: 'comments/comment', collection: @review.comments %>
+</div>
+<div>
+  <h4>コメントしてください</h4>
+  <%= form_for [@review, @comment], remote: true do |f| %>
+  <%= f.text_area :comment, id: "comment_field" %><br>
+  <%= f.submit '送信' %>
+  <% end %>
 </div>
