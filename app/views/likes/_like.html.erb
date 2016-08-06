@@ -1,23 +1,25 @@
 <% if review.like_user(current_user.id) %>
 <!-- reviewに対してされているlikeをcurrent_userがつけている場合 -->
-<%= button_to review_like_path(review.id, like), method: :delete, id: "like-button", remote: true do %>
-<%= image_tag("きらい.svg") %>
-<span>
-  <%= review.likes_count %>
-</span>
-<% end %>
+  <%= button_to review_like_path(review, like), method: :delete, id: "like-button", remote: true do %>
+  <%= image_tag("きらい.svg") %>
+  <span>
+    <%= review.likes_count %>
+  </span>
+  <% end %>
+
 <% else %>
 <!-- reviewに対してされているlikeをcurrent_userがつけていない場合 -->
-<%= button_to review_likes_path(review), method: :post, id: "like-button", remote: true do %>
-<%= image_tag("すき.svg") %>
-<% if review.likes_count == nil %>
-<span>
-  0
-</span>
-<% else %>
-<span>
-  <%= review.likes_count %>
-</span>
-<% end %>
-<% end %>
+  <%= button_to review_likes_path(review), method: :post, id: "like-button", remote: true do %>
+  <%= image_tag("すき.svg") %>
+  <% if review.likes_count == nil %>
+    <span>
+      0
+    </span>
+  <% else %>
+    <span>
+      <%= review.likes_count %>
+    </span>
+  <% end %>
+  <% end %>
+
 <% end %>
