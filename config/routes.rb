@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   resources :reviews do
     resources :likes, only: [:create, :destroy]
+    resources :comments
   end
   root 'tools#index'
 end
