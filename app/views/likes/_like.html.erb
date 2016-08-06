@@ -10,8 +10,14 @@
 <!-- reviewに対してされているlikeをcurrent_userがつけていない場合 -->
 <%= button_to review_likes_path(review), method: :post, id: "like-button", remote: true do %>
 <%= image_tag("すき.svg") %>
+<% if review.likes_count == nil %>
+<span>
+  0
+</span>
+<% else %>
 <span>
   <%= review.likes_count %>
 </span>
+<% end %>
 <% end %>
 <% end %>
