@@ -6,6 +6,10 @@
   <%= render partial: "likes/like", locals: { like: @review.likes.find_by(user_id: current_user.id), review: @review } %>
 </div>
 
+<!-- コメント総数の表示 -->
+<div id="comments-number">
+  コメント(<%= @review.comments.count %>)
+</div>
 <!-- コメントの表示 -->
 <div id="comments">
   <%= render partial: 'comments/comment', collection: @review.comments %>
